@@ -1,10 +1,3 @@
-/**
- * 
- * @authors Tom Hu (webmaster@h1994st.com)
- * @date    2014-05-24 12:35:01
- * @version 1.0
- */
-
 (function (window) {
     var document = window.document;
 
@@ -345,6 +338,6 @@
 
     // Add event listener for start btn
     startBtn.addEventListener('click', start);
-})(window)
 
+})(window)
 

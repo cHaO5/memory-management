@@ -8,11 +8,12 @@
     
     <!-- Core CSS -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
   </head>
   
   <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-          <a class="navbar-brand" href="#">Operating System</a>
+          <a class="navbar-brand" href="#">Operating System / <span style="color: aquamarine">Memory Management</span></a>
       </nav>
 
     <div class="container">
@@ -29,7 +30,7 @@
           <h4>Page-replacement Policy</h4>
 
           <div class="custom-control custom-radio">
-              <input type="radio" id="FIFORatio" name="customRadio" class="custom-control-input" checked="" value="FIFO">
+              <input type="radio" id="FIFORatio" name="customRadio" class="custom-control-input" value="FIFO" checked>
               <label class="custom-control-label" for="FIFORatio">FIFO</label>
             </div>
             <div class="custom-control custom-radio">
@@ -71,19 +72,123 @@
           <p>缺页率：<span id="pageFaultRate">NULL</span></p> -->
         </div>
 
+        <div id="myAlert" class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>成功！</strong>结果是成功的。
+        </div>
         <button id="startBtn" type="button" class="btn btn-primary">Start</button>
         
         <div class="algorithm-console">
           <textarea class="console" name="console" id="console" cols="30" rows="30" placeholder="Output" readonly></textarea><!-- /.console -->
         </div><!-- /.algorithm-console -->
+
+    
+              <div class="forth circle" id="pageFaultCircle">
+              </div>
       </main><!-- /#main -->
 
+      
+
+      
       <footer>
         
       </footer>
     </div>
 
     <!-- Core JavaScript -->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <!-- <script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script> -->
+    <script type="text/javascript" src="js/circle-progress.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/examples.js"></script>
+      
+    <!-- <script>
+    (function($) {
+      /*
+       * Example 1:
+       *
+       * - no animation
+       * - custom gradient
+       *
+       * By the way - you may specify more than 2 colors for the gradient
+       */
+      $('.first.circle').circleProgress({
+        value: 0.35,
+        animation: false,
+        fill: {gradient: ['#ff1e41', '#ff5f43']}
+      });
+    
+      /*
+       * Example 2:
+       *
+       * - default gradient
+       * - listening to `circle-animation-progress` event and display the animation progress: from 0 to 100%
+       */
+      $('.second.circle').circleProgress({
+        value: 0.6
+      }).on('circle-animation-progress', function(event, progress) {
+        $(this).find('strong').html(Math.round(100 * progress) + '<i>%</i>');
+      });
+    
+      /*
+       * Example 3:
+       *
+       * - very custom gradient
+       * - listening to `circle-animation-progress` event and display the dynamic change of the value: from 0 to 0.8
+       */
+      $('.third.circle').circleProgress({
+        value: 0.75,
+        fill: {gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI / 4}
+      }).on('circle-animation-progress', function(event, progress, stepValue) {
+        $(this).find('strong').text(stepValue.toFixed(2).substr(1));
+      });
+    
+      /*
+       * Example 4:
+       *
+       * - solid color fill
+       * - custom start angle
+       * - custom line cap
+       * - dynamic value set
+       */
+      var c4 = $('.forth.circle');
+    
+      c4.circleProgress({
+        startAngle: -Math.PI / 4 * 3,
+        value: 0,
+        lineCap: 'round',
+        fill: {color: '#ffa500'}
+      });
+    
+      // Let's emulate dynamic value update
+      // setTimeout(function() { c4.circleProgress('value', 0.7); }, 1000);
+      // setTimeout(function() { c4.circleProgress('value', 1.0); }, 1100);
+      // setTimeout(function() { c4.circleProgress('value', document.getElementById("pageFaultRate")); }, 6000);
+      $('.forth.circle').circleProgress('value', 0.75);
+      $('.forth.circle').circleProgress('value', document.getElementById("pageFaultRate"));
+    
+    
+      /*
+       * Example 5:
+       *
+       * - image fill; image should be squared; it will be stretched to SxS size, where S - size of the widget
+       * - fallback color fill (when image is not loaded)
+       * - custom widget size (default is 100px)
+       * - custom circle thickness (default is 1/14 of the size)
+       * - reverse drawing mode
+       * - custom animation start value
+       * - usage of "data-" attributes
+       */
+      $('.fifth.circle').circleProgress({
+        value: 0.7
+        // all other config options were taken from "data-" attributes
+        // options passed in config object have higher priority than "data-" attributes
+        // "data-" attributes are taken into account only on init (not on update/redraw)
+        // "data-fill" (and other object options) should be in valid JSON format
+      });
+    })(jQuery);
+    </script>
+     -->
+    <!-- <script src="jquery-circle-progress/dist/circle-progress.js"></script> -->
   </body>
 </html>
