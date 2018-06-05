@@ -52,6 +52,8 @@
   c4.circleProgress({
     startAngle: -Math.PI / 4 * 3,
     value: 0,
+    thickness: 20,
+    size: 200,
     //lineCap: 'round',
     fill: {color: '#18BC9C'}
   });
@@ -62,42 +64,49 @@
   // setTimeout(function() { c4.circleProgress('value', missingPage/320); }, 2100);
   $('#startBtn').click(function(){
     var selected = $('input[type="radio"][name="customRadio"]:checked').val()
-    if (selected == null) {
-      $('#myAlert').alert();
-    } else if (selected === "FIFO") {
-      $('#pageFaultCircle').circleProgress({
+    var pageCircle = $('#pageFaultCircle');
+    if (selected === "FIFO") {
+      pageCircle.circleProgress({
         value: 0,
         fill: { color: '#18BC9C' }
       });
-      $('#pageFaultCircle').circleProgress('value', $('#pageFaultRate').text());
+      pageCircle.circleProgress('value', $('#pageFaultRate').text());
     } else if (selected === "LRU") {
-      $('#pageFaultCircle').circleProgress({
+      pageCircl.circleProgress({
         value: 0,
         fill: { color: '#ffa500' }
       });
-      $('#pageFaultCircle').circleProgress('value', $('#pageFaultRate').text());
+      pageCircle.circleProgress('value', $('#pageFaultRate').text());
     }
+
+    pageCircle.on('circle-animation-progress', function(event, progress, stepValue) {
+      $('.circleValue').text((100 * stepValue).toFixed(2) + '%');
+    });
+
     console.log(selected);
     
   })
 
+//   var circles = $('.sixth.circle');
 
-  /*
-   * Example 5:
-   *
-   * - image fill; image should be squared; it will be stretched to SxS size, where S - size of the widget
-   * - fallback color fill (when image is not loaded)
-   * - custom widget size (default is 100px)
-   * - custom circle thickness (default is 1/14 of the size)
-   * - reverse drawing mode
-   * - custom animation start value
-   * - usage of "data-" attributes
-   */
-  $('.fifth.circle').circleProgress({
-    value: 0.7
-    // all other config options were taken from "data-" attributes
-    // options passed in config object have higher priority than "data-" attributes
-    // "data-" attributes are taken into account only on init (not on update/redraw)
-    // "data-fill" (and other object options) should be in valid JSON format
-  });
+// circles.appear({ force_process: true });
+
+// circles.on('appear', function() {
+//   var circle = $(this);
+
+//   if (!circle.data('inited')) {
+//     circle.circleProgress({
+//       value: 1,
+//       size: 50,
+//       thickness: 10,
+//       fill: "#f55"
+//     });
+
+//     circle.data('inited', true);
+
+//     circle.on('circle-animation-progress', function(event, progress, stepValue) {
+//       $(this).find('.value').text((100 * stepValue).toFixed());
+//     });
+//   }
+// });
 })(jQuery);

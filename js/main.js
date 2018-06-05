@@ -74,6 +74,8 @@
         currentInstructionSpan.textContent = -1;
         numberOfMissingPagesSpan.textContent = missingPage;
         pageFaultRateSpan.textContent = missingPage / 320;
+
+        
     };
 
     function initMemory() {
@@ -185,6 +187,13 @@
                 insCount++;
                 instructions[instruct] = true;
             };
+
+            var row = document.getElementById("memoryTable").insertRow();
+            row.insertCell(0).innerHTML = instruct;
+            row.insertCell(1).innerHTML = memory[0];
+            row.insertCell(2).innerHTML = memory[1] == undefined ? "Empty" : memory[1];
+            row.insertCell(3).innerHTML = memory[2] == undefined ? "Empty" : memory[2];
+            row.insertCell(4).innerHTML = memory[3] == undefined ? "Empty" : memory[3];
         };
     };
 
@@ -339,5 +348,6 @@
     // Add event listener for start btn
     startBtn.addEventListener('click', start);
 
+    
 })(window)
 

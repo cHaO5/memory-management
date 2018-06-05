@@ -7,7 +7,10 @@
     <title>OS Memory Management</title>
     
     <!-- Core CSS -->
+    
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
+    
     <!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
   </head>
   
@@ -18,7 +21,7 @@
 
     <div class="container">
         
-      <header>
+      <header  class="text-center">
         <h1>Memory Management</h1>
         <!-- <h1><small>请求调页模拟</small></h1> -->
         <h2 class="text-muted">Demand Paging Simulator</h1>
@@ -72,10 +75,6 @@
           <p>缺页率：<span id="pageFaultRate">NULL</span></p> -->
         </div>
 
-        <div id="myAlert" class="alert alert-success">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
-            <strong>成功！</strong>结果是成功的。
-        </div>
         <button id="startBtn" type="button" class="btn btn-primary">Start</button>
         
         <div class="algorithm-console">
@@ -83,8 +82,26 @@
         </div><!-- /.algorithm-console -->
 
     
-              <div class="forth circle" id="pageFaultCircle">
-              </div>
+        <div class="gauge">
+              <div class="forth circle" id="pageFaultCircle"></div>
+              <br>
+              <h5 class="circleValue text-center"></h5>
+        </div>           
+
+        <table class="table table-hover" id="memoryTable">
+            <thead>
+              <tr>
+                <th scope="col">Instuction</th>
+                <th scope="col">Block 1</th>
+                <th scope="col">Block 2</th>
+                <th scope="col">Block 3</th>
+                <th scope="col">Block 4</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table> 
       </main><!-- /#main -->
 
       
