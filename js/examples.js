@@ -72,7 +72,7 @@
       });
       pageCircle.circleProgress('value', $('#pageFaultRate').text());
     } else if (selected === "LRU") {
-      pageCircl.circleProgress({
+      pageCircle.circleProgress({
         value: 0,
         fill: { color: '#ffa500' }
       });

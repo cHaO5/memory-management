@@ -4,28 +4,28 @@
     // 获取“开始”按钮
     var startBtn = document.getElementById("startBtn");
 
-    function Console(consoleID) {
-        this.consoleMain = document.getElementById(consoleID);
+    // function Console(consoleID) {
+    //     this.consoleMain = document.getElementById(consoleID);
 
-        if (this.consoleMain.tagName.toUpperCase() != "TEXTAREA") {
-            throw new Error("控制台输出窗口必须为TEXTAREA");
-        };
+    //     if (this.consoleMain.tagName.toUpperCase() != "TEXTAREA") {
+    //         throw new Error("控制台输出窗口必须为TEXTAREA");
+    //     };
 
-        Console.prototype.log = function (string) {
-            this.consoleMain.value += ("> " + string + "\n");
-        };
+    //     Console.prototype.log = function (string) {
+    //         this.consoleMain.value += ("> " + string + "\n");
+    //     };
 
-        Console.prototype.error = function (string) {
-            this.consoleMain.value += ("> !ERROR: " + string + "\n");
-        };
+    //     Console.prototype.error = function (string) {
+    //         this.consoleMain.value += ("> !ERROR: " + string + "\n");
+    //     };
 
-        Console.prototype.clear = function () {
-            this.consoleMain.value = "";
-        };
-    };
+    //     Console.prototype.clear = function () {
+    //         this.consoleMain.value = "";
+    //     };
+    // };
 
     // 初始化控制台
-    var console = new Console("console");
+    // var console = new Console("console");
 
     var numberOfTotalMemoryBlocks = parseInt(document.getElementById("numberOfTotalMemoryBlocks").textContent); // 4
     var numberOfTotalInstructions = parseInt(document.getElementById("numberOfTotalInstructions").textContent); // 320
@@ -56,12 +56,12 @@
         for (var i = 0; i < memory.length; i++) {
             if (Math.floor(number / numberOfInstructionsInEachPage) === memory[i]) {
                 // 已经存在，没有发生缺页
-                console.log("指令" + number + "在内存的块" + i + "中");
+                // console.log("指令" + number + "在内存的块" + i + "中");
                 return true;
             };
         };
         // 缺页
-        console.log("发生缺页，指令" + number + "不在内存中");
+        // console.log("发生缺页，指令" + number + "不在内存中");
         return false;
     };
 
@@ -79,7 +79,7 @@
     };
 
     function initMemory() {
-        console.log("初始化内存块");
+        // console.log("初始化内存块");
         var i = 0;
         for (var i = 0; i < memory.length; i++) {
             var page = Math.floor(Math.random() * (numberOfTotalInstructions / numberOfInstructionsInEachPage));
@@ -87,14 +87,14 @@
             var instruct = page * numberOfInstructionsInEachPage + offset;
 
             // 将指令所在的页调入内存
-            console.log("将指令" + instruct + "所在的页调入内存空白块" + i);
+            // console.log("将指令" + instruct + "所在的页调入内存空白块" + i);
             memory[i] = page;
         };
-        console.log("初始化结束");
+        // console.log("初始化结束");
     };
 
     function FIFO() {
-        console.log("使用FIFO算法");
+        // console.log("使用FIFO算法");
 
         // 选择指令的策略
         //  0 - 顺序执行
@@ -181,7 +181,7 @@
                     pageFaultRateSpan.textContent = missingPage / 320;
 
                     // 替换 - FIFO
-                    console.log("将指令" + instruct + "所在的页调入内存，替换块" + po % 4);
+                    // console.log("将指令" + instruct + "所在的页调入内存，替换块" + po % 4);
                     memory[(po++) % 4] = Math.floor(instruct / numberOfInstructionsInEachPage);
                 };
                 insCount++;
@@ -198,7 +198,7 @@
     };
 
     function LRU() {
-        console.log("使用LRU算法");
+        // console.log("使用LRU算法");
 
         // 选择指令的策略
         //  0 - 顺序执行
@@ -286,7 +286,7 @@
                     pageFaultRateSpan.textContent = missingPage / 320;
 
                     // 替换
-                    console.log("将指令" + instruct + "所在的页调入内存，替换块" + stack[0]);
+                    // console.log("将指令" + instruct + "所在的页调入内存，替换块" + stack[0]);
                     memory[stack[0]] = Math.floor(instruct / numberOfInstructionsInEachPage);
                 };
 
@@ -301,6 +301,13 @@
                 insCount++;
                 instructions[instruct] = true;
             };
+
+            var row = document.getElementById("memoryTable").insertRow();
+            row.insertCell(0).innerHTML = instruct;
+            row.insertCell(1).innerHTML = memory[0];
+            row.insertCell(2).innerHTML = memory[1] == undefined ? "Empty" : memory[1];
+            row.insertCell(3).innerHTML = memory[2] == undefined ? "Empty" : memory[2];
+            row.insertCell(4).innerHTML = memory[3] == undefined ? "Empty" : memory[3];
         };
     };
 
@@ -311,7 +318,7 @@
         } else if(ratio.value === "LRU") {
             LRU();
         } else {
-            console.log("算法选择错误!!");
+            // console.log("算法选择错误!!");
         };
     };
 
@@ -322,11 +329,13 @@
         // 初始化变量
         init();
 
+        $("#memoryTable  tr:not(:first)").empty("");
+
         // 清空控制台输出
-        console.clear();
+        // console.clear();
 
         // 输出开始信息
-        console.log("开始模拟")
+        // console.log("开始模拟")
 
         // 初始化内存
         // initMemory();
@@ -335,11 +344,11 @@
         chooseAlgrithm();
 
         // 输出结束信息
-        console.log("模拟结束");
-        console.log("----------------");
+        // console.log("模拟结束");
+        // console.log("----------------");
 
         // 输出结果
-        console.log("缺页率为：" + missingPage + "/320");
+        // console.log("缺页率为：" + missingPage + "/320");
 
         // 启用“开始”按钮
         startBtn.disabled = false;
