@@ -8,11 +8,7 @@
   <title>OS Memory Management</title>
 
   <!-- Core CSS -->
-
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
-
-  <!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
 </head>
 
 <body>
@@ -27,7 +23,6 @@
     <br>
     <div class="text-center">
       <h1>Memory Management</h1>
-      <!-- <h1><small>请求调页模拟</small></h1> -->
       <h2 class="text-muted">Demand Paging Simulator</h1>
         <h5>1552743 He Zhuokun</h5>
     </div>
@@ -49,110 +44,103 @@
       </div>
       <br>
 
-      <!-- /.algorithm-input -->
-      <div class="row">
-        <div class="col-md-6">
-          <div class="algorithm-detail">
-
-            <h4>Simulation Information</h4>
+      <h4>Simulation Information</h4>
+      <div class="algorithm-detail">
+        <div class="row">
+          <div class="col-md-4">
             <p>Memory block:
               <button type="button" class="btn btn-success" disabled>
                 <span id="numberOfTotalMemoryBlocks">4</span>
               </button>
             </p>
+          </div>
+
+          <div class="col-md-4">
             <p>Instruction:
               <button type="button" class="btn btn-success" disabled>
                 <span id="numberOfTotalInstructions">320</span>
               </button>
             </p>
+          </div>
+
+          <div class="col-md-4">
             <p>Instuction per page:
               <button type="button" class="btn btn-success" disabled>
                 <span id="numberOfInstructionsInEachPage">10</span>
               </button>
             </p>
           </div>
-        </div>
-        <!-- /algorithm-detail -->
 
-        <div class="col-md-6">
-          <div class="algorithm-result">
-            <h4>Simulation Result</h4>
-            <p>Current Instuction:
-              <button type="button" class="btn btn-info" disabled>
-                <span id="currentInstruction">-1</span>
-              </button>
-            </p>
-            <p>Page Fault:
-              <button type="button" class="btn btn-info" disabled>
-                <span id="numberOfMissingPages">-1</span>
-              </button>
-            </p>
-            <p>Page Fault Rate:
-              <button type="button" class="btn btn-info" disabled>
-                <span id="pageFaultRate">NULL</span>
-              </button>
-            </p>
-          </div>
         </div>
       </div>
 
+      <br>
       <center>
         <button id="startBtn" type="button" class="btn btn-primary">Start</button>
       </center>
+      <br>
 
-
-      <!-- <div class="algorithm-console">
-          <textarea class="console" name="console" id="console" cols="30" rows="30" placeholder="Output" readonly></textarea>
-        </div> -->
-<br>
       <div class="row">
+
         <div class="col-md-4">
           <center>
             <div class="gauge">
               <div class="forth circle" id="pageFaultCircle"></div>
               <br>
-              <h5>Page Fault Rate</h5>
-              <h5 class="circleValue text-center"></h5>
+              <h5>Page Fault Rate:
+              <span class="circleValue text-center"></span>
+              </h5>
+
+              <h5>
+                Page Fault:
+                <span id="numberOfMissingPages">0</span>
+              </h5>
+              <h5 id="pageFaultRate" style="color: #fff;"></span>
             </div>
           </center>
         </div>
 
         <div class="col-md-8">
-          <div style="height:300px; overflow-y:scroll; overflow-x:none;">
-            <table class="table table-hover" id="memoryTable" height="300px">
-              <thead>
-                <tr>
+          <center>
+            <h4>Memory</h4>
+            <div style="height:300px; overflow-y:scroll; overflow-x:none;">
+              <table class="table table-hover" id="memoryTable" height="300px">
+                <thead>
                   <th scope="col">Instuction</th>
+                  <th scope="col">Block 0</th>
                   <th scope="col">Block 1</th>
                   <th scope="col">Block 2</th>
                   <th scope="col">Block 3</th>
-                  <th scope="col">Block 4</th>
-                </tr>
-              </thead>
-              <tbody>
+                  </tr>
+                </thead>
+                <tbody>
 
-              </tbody>
-            </table>
-          </div>
+                </tbody>
+              </table>
+            </div>
+          </center>
         </div>
+      </div>
+
+
+
+
+      <div class="row">
+
+
+        
 
       </div>
     </div>
-
-    <!-- /#main -->
-
-
-
   </div>
 
   </div>
 
   <!-- Core JavaScript -->
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-  <!-- <script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script> -->
   <script type="text/javascript" src="js/circle-progress.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript" src="js/examples.js"></script>
+  <script type="text/javascript" src="js/controller.js"></script>
+  <script type="text/javascript" src="js/circle.js"></script>
 </body>
 
 </html>
